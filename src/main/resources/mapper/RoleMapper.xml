@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.dream.big.mac.system.mapper.RoleMapper">
+
+    <resultMap type="com.dream.big.mac.system.model.Role" id="BaseResultMap">
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="role_name" property="roleName" jdbcType="VARCHAR"/>
+        <result column="view_name" property="viewName" jdbcType="VARCHAR"/>
+        <result column="description" property="description" jdbcType="VARCHAR"/>
+        <result column="is_active" property="isActive" jdbcType="INTEGER"/>
+        <result column="create_name" property="createName" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="DATE"/>
+        <result column="modify_name" property="modifyName" jdbcType="VARCHAR"/>
+        <result column="modify_time" property="modifyTime" jdbcType="DATE"/>
+    </resultMap>
+
+
+    <sql id="BASE_SELECT_COLUMN">
+        ID,
+        roleName,
+        viewName,
+        description,
+        isActive,
+        createName,
+        createTime,
+        modifyName,
+        modifyTime
+    </sql>
+
+
+    <insert id="insertRole" parameterType="com.dream.big.mac.system.model.Role" >
+        insert into role
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="roleName != null" >
+                role_name,
+            </if>
+            <if test="viewName != null" >
+                view_name,
+            </if>
+            <if test="description != null" >
+                description,
+            </if>
+            <if test="isActive != null" >
+                is_active,
+            </if>
+            <if test="createName != null" >
+                create_name,
+            </if>
+            <if test="createTime != null" >
+                create_time,
+            </if>
+            <if test="modifyName != null" >
+                modify_name,
+            </if>
+            <if test="modifyTime != null" >
+                modify_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null and id !=''" >
+                #{id},
+            </if>
+            <if test="roleName != null and roleName !=''" >
+                #{roleName},
+            </if>
+            <if test="viewName != null and viewName !=''" >
+                #{viewName},
+            </if>
+            <if test="description != null and description !=''" >
+                #{description},
+            </if>
+            <if test="isActive != null and isActive !=''" >
+                #{isActive},
+            </if>
+            <if test="createName != null and createName !=''" >
+                #{createName},
+            </if>
+            <if test="createTime != null" >
+                #{createTime},
+            </if>
+            <if test="modifyName != null and modifyName !=''" >
+                #{modifyName},
+            </if>
+            <if test="modifyTime != null" >
+                #{modifyTime},
+            </if>
+        </trim>
+    </insert>
+
+
+    <select id="getRoles" parameterType="String" resultMap="BaseResultMap">
+        SELECT r.*
+        from role r left JOIN
+        user_role o  on r.id = o.role_id
+        LEFT JOIN user u on o.user_id = u.id
+        where u.user_account = #{account}
+    </select>
+
+</mapper>

@@ -1,0 +1,75 @@
+body{background: url(/images/login.png) no-repeat;
+background-size: cover;
+font-size: 16px;
+}
+
+.form{
+background: rgba(240, 255, 255, 0.4);
+/* background: rgba(146, 135, 187, 0.8); */
+width:320px;
+position: absolute;
+top: 28%;
+right:10%;
+height:330px;
+}
+
+#login_form{
+display: block;
+}
+#register_form{
+display: none;
+}
+
+.fa{
+display: inline-block;
+top: 27px;
+left: 6px;
+position: relative;
+color: #ccc;
+}
+
+input[type="text"],input[type="password"]{
+padding-left:26px;
+width:260px;
+}
+
+.checkbox{
+padding-left:21px;
+}
+
+.login_button{
+border:1px ;
+width:260px;
+height:40px;
+font-size: 20px;
+border-radius:18px;
+outline:none;
+color: rgba(255, 255, 255, 0.8);
+background: #FF3366;
+}
+
+.login__sign_password{
+/* font-size: 1.2rem; */
+font-size: 10px;
+color: #ABA8AE;
+}
+
+.login__sign_account{
+font-size: 1.2rem;
+color: 	#000000;
+}
+
+.login__sumbit{
+margin:-20px 20px 0px 0px;
+}
+
+.login__a{
+display:inline;
+margin:20px 20px 30px 40px;
+}
+
+.login_error{
+font-size: 15px;
+color:red;
+margin:-10px 20px -10px 0px;
+}
